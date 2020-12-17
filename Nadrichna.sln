@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadrichnaApp", "NadrichnaApp\NadrichnaApp.csproj", "{8DB49036-19AB-432F-98DB-B6DE5572D5C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadrichnaCore", "NadrichnaCore\NadrichnaCore.csproj", "{5DB0653D-658C-4612-9BD8-4794D3D11C50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DB49036-19AB-432F-98DB-B6DE5572D5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB49036-19AB-432F-98DB-B6DE5572D5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB49036-19AB-432F-98DB-B6DE5572D5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB49036-19AB-432F-98DB-B6DE5572D5C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB0653D-658C-4612-9BD8-4794D3D11C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB0653D-658C-4612-9BD8-4794D3D11C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB0653D-658C-4612-9BD8-4794D3D11C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB0653D-658C-4612-9BD8-4794D3D11C50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DED7AE75-6D2C-4169-9F8B-2289548B50E2}
+	EndGlobalSection
+EndGlobal
