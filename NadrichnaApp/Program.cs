@@ -9,8 +9,11 @@ namespace NadrichnaApp
         {
             Car volgaAT2929KH;
             volgaAT2929KH = new Car(ColorEnum.Black);
+            Truck someTruck = new Truck(ColorEnum.Gray);
 
             volgaAT2929KH.Move();
+            someTruck.Move();
+
             Console.ReadLine();
         }
     }
