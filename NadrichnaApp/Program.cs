@@ -15,6 +15,8 @@ namespace NadrichnaApp
             someTruck.Move();
 
             Console.ReadLine();
+            Console.ReadLine();
+                
         }
     }
 }
