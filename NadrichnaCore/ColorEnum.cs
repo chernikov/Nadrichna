@@ -9,6 +9,7 @@ namespace NadrichnaCore
     public enum ColorEnum
     {
         Black,
-        Gray
+        Gray,
+        Pink
     }
 }
