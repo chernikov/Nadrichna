@@ -14,7 +14,8 @@ namespace NadrichnaCore
 
         public virtual void Move()
         {
-            Console.WriteLine($"{Color}. I'm moving...");
+            var type = this.GetType().Name;
+            Console.WriteLine($"{Color} {type}. I'm moving...");
         }
     }
 }

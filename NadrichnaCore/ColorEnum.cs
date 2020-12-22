@@ -10,6 +10,7 @@ namespace NadrichnaCore
     {
         Black,
         Gray,
-        Pink
+        Pink,
+        Yellow
     }
 }
