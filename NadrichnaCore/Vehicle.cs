@@ -2,9 +2,9 @@
 
 namespace NadrichnaCore
 {
-    public class Vehicle
+    public class Vehicle : IVehicle, IMovable
     {
-        public ColorEnum Color;
+        public ColorEnum Color { get; set; }
 
 
         public Vehicle(ColorEnum color)

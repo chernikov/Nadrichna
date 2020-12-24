@@ -1,5 +1,6 @@
 ﻿using NadrichnaCore;
 using System;
+using System.Collections.Generic;
 
 namespace NadrichnaApp
 {
@@ -7,20 +8,17 @@ namespace NadrichnaApp
     {
         static void Main(string[] args)
         {
-            var volgaAT2929KH = new Car(ColorEnum.Black);
-            var someTruck = new Truck(ColorEnum.Gray);
-            var roadster = new Cabriolet(ColorEnum.Pink);
-            var bohdan = new Bus();
-
-            volgaAT2929KH.Move();
-            someTruck.Move();
-            roadster.Move();
-            bohdan.Move();
-
-
+            var list = new List<IVehicle>();
+            list.Add(new Car(ColorEnum.Black));
+            list.Add(new Truck(ColorEnum.Gray));
+            list.Add(new Cabriolet(ColorEnum.Pink));
+            list.Add(new Bus());
+            //list.Add(new Cloud());
+            foreach(var item in list)
+            {
+                item.Move();
+            }
             Console.ReadLine();
-           
-                
         }
     }
 }
