@@ -6,6 +6,10 @@ namespace NadrichnaWeb.Db
     {
         DbSet<Player> Players { get; set; }
 
+        DbSet<Task> Tasks { get;  set; }
+
+     
+
         int SaveChanges();
     }
 }

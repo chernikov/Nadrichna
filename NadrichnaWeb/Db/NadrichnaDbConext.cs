@@ -10,6 +10,8 @@ namespace NadrichnaWeb.Db
     {
         public DbSet<Player> Players { get; set; }
 
+        public DbSet<Task> Tasks { get;  set; }
+
         public NadrichnaDbConext(DbContextOptions options) : base(options)
         {
 
