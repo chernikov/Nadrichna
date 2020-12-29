@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NadrichnaWeb.Db;
 using NadrichnaWeb.Profiles;
+using NadrichnaWeb.Repos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,8 @@ namespace NadrichnaWeb
 
             services.AddDbContext<NadrichnaDbConext>(options => options.UseSqlServer("Server=(local);Initial Catalog=Nadrichna;Trusted_Connection=True;MultipleActiveResultSets=true"));
             services.AddScoped<INadrichnaDbConext, NadrichnaDbConext>();
-            
+            services.AddScoped<IPlayerRepository, PlayerRepository>();
+
             var playerProfile = new PlayerProfile();
             var mapperConfig = new MapperConfiguration(cfg =>
             {
