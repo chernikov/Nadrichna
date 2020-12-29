@@ -31,7 +31,6 @@ namespace NadrichnaWeb.Api
         }
 
         [HttpPost]
-
         public IActionResult Add([FromBody] Task task)
         {
             dbConext.Tasks.Add(task);

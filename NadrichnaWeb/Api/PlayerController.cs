@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace NadrichnaWeb.Api
 {
     [Route("api/player")]
-    public class PlayersController : Controller
+    public class PlayerController : Controller
     {
         private readonly INadrichnaDbConext dbConext;
 
-        public PlayersController(INadrichnaDbConext dbConext)
+        public PlayerController(INadrichnaDbConext dbConext)
         {
             this.dbConext = dbConext;
         }

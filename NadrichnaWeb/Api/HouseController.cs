@@ -60,7 +60,6 @@ namespace NadrichnaWeb.Api
         //update*
 
         [HttpPut]
-
         public IActionResult Put([FromBody] House house)
         {
             var entity = dbConext.Houses.FirstOrDefault(p => p.Id == house.Id);
