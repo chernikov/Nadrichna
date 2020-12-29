@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20201225134100_AddHouse.cs" />
+    <Compile Remove="Migrations\20201225134100_AddHouse.Designer.cs" />
+    <Compile Remove="Migrations\20201226104338_AddTask.cs" />
+    <Compile Remove="Migrations\20201226104338_AddTask.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.10">
       <PrivateAssets>all</PrivateAssets>

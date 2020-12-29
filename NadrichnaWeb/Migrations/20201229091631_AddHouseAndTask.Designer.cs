@@ -9,8 +9,8 @@ using NadrichnaWeb.Db;
 namespace NadrichnaWeb.Migrations
 {
     [DbContext(typeof(NadrichnaDbConext))]
-    [Migration("20201226104338_AddTask")]
-    partial class AddTask
+    [Migration("20201229091631_AddHouseAndTask")]
+    partial class AddHouseAndTask
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,27 @@ namespace NadrichnaWeb.Migrations
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("NadrichnaWeb.Db.House", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Adress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FloorsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Houses");
+                });
 
             modelBuilder.Entity("NadrichnaWeb.Db.Player", b =>
                 {
