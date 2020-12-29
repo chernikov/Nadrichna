@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace NadrichnaWeb.Db
+namespace NadrichnaWeb.Dto
 {
-    public class Player
+    public class PlayerDto
     {
         public int Id { get; set; }
 
@@ -15,8 +16,12 @@ namespace NadrichnaWeb.Db
 
         public string Nickname { get; set; }
 
-        public string Password { get; set; }
+        public int BirthdayDay { get; set; }
 
-        public DateTime Birthday { get; set; }
+        public int BirthdayMonth { get; set; }
+
+        public int BirthdayYear { get; set; }
+
+
     }
 }

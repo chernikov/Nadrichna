@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NadrichnaWeb.Db;
+using NadrichnaWeb.Profiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +27,17 @@ namespace NadrichnaWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<NadrichnaDbConext>(options => options.UseSqlServer("Server=(local);Initial Catalog=Nadrichna;Trusted_Connection=True;MultipleActiveResultSets=true"));
             services.AddScoped<INadrichnaDbConext, NadrichnaDbConext>();
+            
+            var playerProfile = new PlayerProfile();
+            var mapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(playerProfile);
+            });
+            var mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

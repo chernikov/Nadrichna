@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using NadrichnaWeb.Db;
+using NadrichnaWeb.Dto;
+using NadrichnaWeb.Repos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,43 +14,46 @@ namespace NadrichnaWeb.Api
     [Route("api/player")]
     public class PlayerController : Controller
     {
-        private readonly INadrichnaDbConext dbConext;
+        private readonly IPlayerRepository playerRepository;
+        private readonly IMapper mapper;
 
-        public PlayerController(INadrichnaDbConext dbConext)
+        public PlayerController(IPlayerRepository playerRepository, IMapper mapper)
         {
-            this.dbConext = dbConext;
+            this.playerRepository = playerRepository;
+            this.mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var list = dbConext.Players.ToList();
-            return Ok(list);
+            var list = playerRepository.GetAll();
+            var resultList = mapper.Map<List<Player>, List<PlayerDto>>(list);
+            return Ok(resultList);
         }
 
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            var entity = dbConext.Players.FirstOrDefault(p => p.Id == id);
-            return Ok(entity);
+            var entity = playerRepository.Get(id);
+            var result = mapper.Map<PlayerDto>(entity);
+            return Ok(result);
         }
 
         //Add new player
         [HttpPost]
-        public IActionResult Post([FromBody] Player player)
+        public IActionResult Post([FromBody] PlayerDto player)
         {
-            dbConext.Players.Add(player);
-            dbConext.SaveChanges();
-            return Ok(player);
+            var entity = mapper.Map<Player>(player);
+            var newPlayer = playerRepository.Create(entity);
+            var result = mapper.Map<PlayerDto>(newPlayer);
+            return Ok(result);
         }
 
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
-            var entity = dbConext.Players.FirstOrDefault(p => p.Id == id);
-            dbConext.Players.Remove(entity);
-            dbConext.SaveChanges();
-            return Ok(entity);
+            playerRepository.Remove(id);
+            return Ok();
         }
     }
 }
