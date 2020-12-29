@@ -67,7 +67,7 @@ namespace NadrichnaWeb.Api
 
             if(entity != null)
             {
-                entity.Adress = house.Adress;
+                entity.Address = house.Address;
                 entity.FloorsCount = house.FloorsCount;
                 entity.RoomCount = house.RoomCount;
             }

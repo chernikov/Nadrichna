@@ -9,7 +9,7 @@ namespace NadrichnaWeb.Db
     {
         public int Id { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         public int RoomCount { get; set; }
 
