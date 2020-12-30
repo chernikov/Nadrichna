@@ -32,11 +32,14 @@ namespace NadrichnaWeb
             services.AddDbContext<NadrichnaDbConext>(options => options.UseSqlServer("Server=(local);Initial Catalog=Nadrichna;Trusted_Connection=True;MultipleActiveResultSets=true"));
             services.AddScoped<INadrichnaDbConext, NadrichnaDbConext>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
+            services.AddScoped<IHouseRepository, HouseRepository>();
 
             var playerProfile = new PlayerProfile();
+            var houseProfile = new HouseProfile();
             var mapperConfig = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(playerProfile);
+                cfg.AddProfile(houseProfile);
             });
             var mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
