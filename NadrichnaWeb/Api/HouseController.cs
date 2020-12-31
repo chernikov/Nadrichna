@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using NadrichnaWeb.Db;
+using NadrichnaWeb.Dto;
+using NadrichnaWeb.Repos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +13,13 @@ namespace NadrichnaWeb.Api
     [Route("api/house")]
     public class HouseController : Controller
     {
-        private readonly INadrichnaDbConext dbConext;
+        private readonly IHouseRepository houseRepository;
+        private readonly IMapper mapper;
 
-        public HouseController(INadrichnaDbConext dbConext)
+        public HouseController(IHouseRepository houseRepository, IMapper mapper)
         {
-            this.dbConext = dbConext;
+            this.houseRepository = houseRepository;
+            this.mapper = mapper;
         }
 
         //get list
@@ -22,7 +27,8 @@ namespace NadrichnaWeb.Api
         [HttpGet]
         public IActionResult Get()
         {
-            var list = dbConext.Houses.ToList();
+            var list = houseRepository.GetAll();
+            var result = mapper.Map<List<House>, List<HouseDto>>(list);
             return Ok(list);
         }
 
@@ -31,7 +37,8 @@ namespace NadrichnaWeb.Api
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            var entity = dbConext.Houses.FirstOrDefault(p => p.Id == id);
+            var entity = houseRepository.Get(id);
+            var result = mapper.Map<HouseDto>(entity);
             return Ok(entity);
         }
 
@@ -39,11 +46,12 @@ namespace NadrichnaWeb.Api
 
         [HttpPost]
 
-        public IActionResult Add([FromBody] House house)
+        public IActionResult Add([FromBody] HouseDto house)
         {
-            dbConext.Houses.Add(house);
-            dbConext.SaveChanges();
-            return Ok();
+            var entity = mapper.Map<House>(house);
+            var newHouse = houseRepository.Create(entity);
+            var result = mapper.Map<HouseDto>(newHouse);
+            return Ok(result);
         }
 
         //delete
@@ -51,27 +59,19 @@ namespace NadrichnaWeb.Api
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
-            var entity = dbConext.Houses.FirstOrDefault(p => p.Id == id);
-            dbConext.Houses.Remove(entity);
-            dbConext.SaveChanges();
-            return Ok(entity);
+            houseRepository.Remove(id);
+            return Ok();
         }
 
         //update*
 
         [HttpPut]
-        public IActionResult Put([FromBody] House house)
+        public IActionResult Put([FromBody] HouseDto house)
         {
-            var entity = dbConext.Houses.FirstOrDefault(p => p.Id == house.Id);
-
-            if(entity != null)
-            {
-                entity.Address = house.Address;
-                entity.FloorsCount = house.FloorsCount;
-                entity.RoomCount = house.RoomCount;
-            }
-            dbConext.SaveChanges();
-            return Ok(entity);
+            var entity = mapper.Map<House>(house);
+            var editedHouse = houseRepository.Update(entity);
+            var result = mapper.Map<HouseDto>(editedHouse);
+            return Ok(result);
         }
 
     }
