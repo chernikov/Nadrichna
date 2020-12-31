@@ -1,50 +1,56 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using NadrichnaWeb.Db;
+using NadrichnaWeb.Dto;
+using NadrichnaWeb.Repos;
 using System.Collections.Generic;
 using System.Linq;
-using Task = NadrichnaWeb.Db.Task;
+using _Task = NadrichnaWeb.Db._Task;
 
 namespace NadrichnaWeb.Api
 {
     [Route("api/task")]
     public class TaskController : Controller
     {
-        private readonly INadrichnaDbConext dbConext;
+        private readonly ITaskRepository taskRepository;
+        private readonly IMapper mapper;
 
-        public TaskController(INadrichnaDbConext dbConext)
+        public TaskController(ITaskRepository taskRepository, IMapper mapper)
         {
-            this.dbConext = dbConext;
+            this.taskRepository = taskRepository;
+            this.mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            var list = dbConext.Tasks.ToList();
+            var list = taskRepository.GetAll();
+            var resultList = mapper.Map<List<_Task>, List<TaskDto>>(list);
             return Ok(list);
         }
 
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)
         {
-            var entity = dbConext.Tasks.FirstOrDefault(p => p.Id == id);
-            return Ok(entity);
+            var entity = taskRepository.Get(id);
+            var result = mapper.Map<TaskDto>(entity);
+            return Ok(result);
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] Task task)
+        public IActionResult Add([FromBody] TaskDto task)
         {
-            dbConext.Tasks.Add(task);
-            dbConext.SaveChanges();
-            return Ok();
+            var entity = mapper.Map<_Task>(task);
+            var newTask = taskRepository.Create(entity);
+            var result = mapper.Map<TaskDto>(newTask);
+            return Ok(result);
         }
 
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
         {
-            var entity = dbConext.Tasks.FirstOrDefault(p => p.Id == id);
-            dbConext.Tasks.Remove(entity);
-            dbConext.SaveChanges();
-            return Ok(entity);
+            taskRepository.Remove(id);
+            return Ok();
         }
 
 
