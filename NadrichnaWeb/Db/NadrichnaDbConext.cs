@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Db
 {
@@ -12,7 +8,7 @@ namespace NadrichnaWeb.Db
 
         public DbSet<House> Houses { get; set; }
 
-        public DbSet<_Task> Tasks { get;  set; }
+        public DbSet<Task> Tasks { get;  set; }
 
         public NadrichnaDbConext(DbContextOptions options) : base(options)
         {

@@ -11,6 +11,8 @@
     <Compile Remove="Migrations\20201225134100_AddHouse.Designer.cs" />
     <Compile Remove="Migrations\20201226104338_AddTask.cs" />
     <Compile Remove="Migrations\20201226104338_AddTask.Designer.cs" />
+    <Compile Remove="Migrations\20201231095514_AddRelations.cs" />
+    <Compile Remove="Migrations\20201231095514_AddRelations.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

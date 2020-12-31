@@ -14,5 +14,7 @@ namespace NadrichnaWeb.Db
         public int RoomCount { get; set; }
 
         public int FloorsCount { get; set; }
+
+        public ICollection<Player> Players { get; set; }
     }
 }

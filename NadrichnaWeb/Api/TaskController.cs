@@ -4,8 +4,6 @@ using NadrichnaWeb.Db;
 using NadrichnaWeb.Dto;
 using NadrichnaWeb.Repos;
 using System.Collections.Generic;
-using System.Linq;
-using _Task = NadrichnaWeb.Db._Task;
 
 namespace NadrichnaWeb.Api
 {
@@ -25,8 +23,8 @@ namespace NadrichnaWeb.Api
         public IActionResult Get()
         {
             var list = taskRepository.GetAll();
-            var resultList = mapper.Map<List<_Task>, List<TaskDto>>(list);
-            return Ok(list);
+            var resultList = mapper.Map<List<Task>, List<TaskDto>>(list);
+            return Ok(resultList);
         }
 
         [HttpGet("{id:int}")]
@@ -40,7 +38,7 @@ namespace NadrichnaWeb.Api
         [HttpPost]
         public IActionResult Add([FromBody] TaskDto task)
         {
-            var entity = mapper.Map<_Task>(task);
+            var entity = mapper.Map<Task>(task);
             var newTask = taskRepository.Create(entity);
             var result = mapper.Map<TaskDto>(newTask);
             return Ok(result);

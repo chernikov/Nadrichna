@@ -1,18 +1,15 @@
-﻿using System;
+﻿using NadrichnaWeb.Db;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using NadrichnaWeb.Db;
 
 namespace NadrichnaWeb.Repos
 {
     public interface ITaskRepository
     {
-        List<_Task> GetAll();
+        List<Task> GetAll();
 
-        _Task Get(int id);
+        Task Get(int id);
 
-        _Task Create(_Task task);
+        Task Create(Task task);
 
         void Remove(int id);
     }

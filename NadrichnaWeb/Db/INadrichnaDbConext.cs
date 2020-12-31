@@ -8,7 +8,7 @@ namespace NadrichnaWeb.Db
 
         DbSet<House> Houses { get; set; }
 
-        DbSet<_Task> Tasks { get;  set; }
+        DbSet<Task> Tasks { get;  set; }
 
         int SaveChanges();
     }

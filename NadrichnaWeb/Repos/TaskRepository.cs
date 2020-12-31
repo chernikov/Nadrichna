@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Repos
 {
@@ -15,19 +14,19 @@ namespace NadrichnaWeb.Repos
             this.dbConext = dbConext;
         }
 
-         public _Task Create(_Task task)
+         public Task Create(Task task)
         {
             dbConext.Tasks.Add(task);
             dbConext.SaveChanges();
             return task;
         }
 
-        public _Task Get(int id)
+        public Task Get(int id)
         {
             return dbConext.Tasks.FirstOrDefault(p => p.Id == id);
         }
 
-        public List<_Task> GetAll()
+        public List<Task> GetAll()
         {
             return dbConext.Tasks.ToList();
         }
