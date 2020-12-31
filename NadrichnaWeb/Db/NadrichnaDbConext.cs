@@ -12,7 +12,7 @@ namespace NadrichnaWeb.Db
 
         public DbSet<House> Houses { get; set; }
 
-        public DbSet<Task> Tasks { get;  set; }
+        public DbSet<_Task> Tasks { get;  set; }
 
         public NadrichnaDbConext(DbContextOptions options) : base(options)
         {
