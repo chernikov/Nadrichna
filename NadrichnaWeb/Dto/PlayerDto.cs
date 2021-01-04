@@ -10,6 +10,8 @@ namespace NadrichnaWeb.Dto
     {
         public int Id { get; set; }
 
+        public int? HouseId { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

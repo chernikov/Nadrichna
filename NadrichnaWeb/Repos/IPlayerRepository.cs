@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Repos
 {
@@ -12,6 +11,8 @@ namespace NadrichnaWeb.Repos
         List<Player> GetAll();
 
         Player Get(int id);
+
+        void AddTaskToPlayer(Task task, int id);
 
         Player Create(Player player);
 

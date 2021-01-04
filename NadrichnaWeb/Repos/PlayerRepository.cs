@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Repos
 {
@@ -41,6 +40,15 @@ namespace NadrichnaWeb.Repos
             {
                 dbContext.Players.Remove(entity);
                 dbContext.SaveChanges();
+            }
+        }
+
+        public void AddTaskToPlayer(Task task, int id)
+        {
+            var entity = dbContext.Players.FirstOrDefault(p => p.Id == id);
+            if (entity != null)
+            {
+                entity.Tasks.Add(task);
             }
         }
     }

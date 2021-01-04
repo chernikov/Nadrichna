@@ -11,6 +11,8 @@ namespace NadrichnaWeb.Repos
 
         Task Create(Task task);
 
+        Task Complete(int id);
+
         void Remove(int id);
     }
 }

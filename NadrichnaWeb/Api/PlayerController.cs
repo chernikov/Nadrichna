@@ -15,11 +15,14 @@ namespace NadrichnaWeb.Api
     public class PlayerController : Controller
     {
         private readonly IPlayerRepository playerRepository;
+        private readonly ITaskRepository taskRepository;
         private readonly IMapper mapper;
 
-        public PlayerController(IPlayerRepository playerRepository, IMapper mapper)
+        public PlayerController(IPlayerRepository playerRepository, ITaskRepository taskRepository, IMapper mapper)
         {
             this.playerRepository = playerRepository;
+            
+            this.taskRepository = taskRepository;
             this.mapper = mapper;
         }
 
@@ -39,6 +42,14 @@ namespace NadrichnaWeb.Api
             return Ok(result);
         }
 
+        [HttpGet("{id:int}, {t:int}")]
+        public IActionResult Get(int id, int t)
+        {
+            var entity = playerRepository.Get(id);
+            var result = entity.Tasks.ToList();
+            return Ok(result);
+        }
+
         //Add new player
         [HttpPost]
         public IActionResult Post([FromBody] PlayerDto player)
@@ -48,6 +59,7 @@ namespace NadrichnaWeb.Api
             var result = mapper.Map<PlayerDto>(newPlayer);
             return Ok(result);
         }
+
 
         [HttpDelete("{id:int}")]
         public IActionResult Delete(int id)
