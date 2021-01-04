@@ -1,4 +1,5 @@
-﻿using NadrichnaWeb.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using NadrichnaWeb.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace NadrichnaWeb.Repos
         public Task Create(Task task)
          {
             dbContext.Tasks.Add(task);
+            dbContext.SaveChanges();
             var taskList = dbContext.Tasks.ToList();
             List<Task> taskListByPlayerId = new List<Task>();
             for (int i = 0; i < taskList.Count; i++)
@@ -36,9 +38,9 @@ namespace NadrichnaWeb.Repos
                 if (taskList[i].PlayerId == task.PlayerId)
                     taskListByPlayerId.Add(taskList[i]);
             }
-            var player = dbContext.Players.FirstOrDefault(p => p.Id == task.PlayerId);
+            var player = dbContext.Players.Include(p => p.Tasks).FirstOrDefault(p => p.Id == task.PlayerId);
             player.Tasks = taskListByPlayerId;
-            dbContext.SaveChanges();
+            
             return task;
          }
 

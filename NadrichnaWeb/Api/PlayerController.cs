@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Api
 {
@@ -46,7 +45,8 @@ namespace NadrichnaWeb.Api
         public IActionResult Get(int id, int t)
         {
             var entity = playerRepository.Get(id);
-            var result = entity.Tasks.ToList();
+            var taskList = entity.Tasks.ToList();
+            var result = mapper.Map<List<Task>, List<TaskDto>>(taskList);
             return Ok(result);
         }
 

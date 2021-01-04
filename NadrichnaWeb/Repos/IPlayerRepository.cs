@@ -12,8 +12,6 @@ namespace NadrichnaWeb.Repos
 
         Player Get(int id);
 
-        void AddTaskToPlayer(Task task, int id);
-
         Player Create(Player player);
 
         void Remove(int id);

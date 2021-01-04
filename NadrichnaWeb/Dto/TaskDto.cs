@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Dto
@@ -12,6 +13,7 @@ namespace NadrichnaWeb.Dto
 
         public int PlayerId { get; set; }
 
+        [JsonIgnore]
         public Player Player { get; set; }
 
         public string Name { get; set; }
