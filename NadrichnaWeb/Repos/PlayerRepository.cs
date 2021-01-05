@@ -1,9 +1,9 @@
-﻿using NadrichnaWeb.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using NadrichnaWeb.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Repos
 {
@@ -24,7 +24,7 @@ namespace NadrichnaWeb.Repos
 
         public Player Get(int id)
         {
-            return dbContext.Players.FirstOrDefault(p => p.Id == id);
+            return dbContext.Players.Include(p => p.Tasks).FirstOrDefault(p => p.Id == id);
         }
 
         public Player Create(Player player)

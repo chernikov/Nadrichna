@@ -1,4 +1,6 @@
-﻿namespace NadrichnaWeb.Db
+﻿using System;
+
+namespace NadrichnaWeb.Db
 {
     public class Task
     {
@@ -11,6 +13,8 @@
         public string Name { get; set; }
 
         public bool Completed { get; set; }
+
+        public DateTime CompleteDate { get; set; }
 
     }
 }

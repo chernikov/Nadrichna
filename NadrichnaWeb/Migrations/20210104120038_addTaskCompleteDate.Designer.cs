@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NadrichnaWeb.Db;
 
 namespace NadrichnaWeb.Migrations
 {
     [DbContext(typeof(NadrichnaDbConext))]
-    partial class NadrichnaDbConextModelSnapshot : ModelSnapshot
+    [Migration("20210104120038_addTaskCompleteDate")]
+    partial class addTaskCompleteDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

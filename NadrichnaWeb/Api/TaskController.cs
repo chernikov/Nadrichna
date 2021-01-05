@@ -51,6 +51,14 @@ namespace NadrichnaWeb.Api
             return Ok();
         }
 
+        [HttpPut("{id:int}")]
+
+        public IActionResult Put(int id)
+        {
+            taskRepository.Complete(id);
+            return Ok();
+        }
+
 
     }
 }
