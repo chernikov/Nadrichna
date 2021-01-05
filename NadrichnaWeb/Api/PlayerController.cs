@@ -14,19 +14,16 @@ namespace NadrichnaWeb.Api
     public class PlayerController : Controller
     {
         private readonly IPlayerRepository playerRepository;
-        private readonly ITaskRepository taskRepository;
         private readonly IMapper mapper;
 
-        public PlayerController(IPlayerRepository playerRepository, ITaskRepository taskRepository, IMapper mapper)
+        public PlayerController(IPlayerRepository playerRepository, IMapper mapper)
         {
             this.playerRepository = playerRepository;
-            
-            this.taskRepository = taskRepository;
             this.mapper = mapper;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetList()
         {
             var list = playerRepository.GetAll();
             var resultList = mapper.Map<List<Player>, List<PlayerDto>>(list);
@@ -34,15 +31,15 @@ namespace NadrichnaWeb.Api
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult Get(int id)
+        public IActionResult GetPlayer(int id)
         {
             var entity = playerRepository.Get(id);
             var result = mapper.Map<PlayerDto>(entity);
             return Ok(result);
         }
 
-        [HttpGet("{id:int}, {t:int}")]
-        public IActionResult Get(int id, int t)
+        [HttpGet("{id:int}/tasks")]
+        public IActionResult GetTasks(int id)
         {
             var entity = playerRepository.Get(id);
             var taskList = entity.Tasks.ToList();
