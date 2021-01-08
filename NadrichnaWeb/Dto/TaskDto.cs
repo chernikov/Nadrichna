@@ -13,8 +13,7 @@ namespace NadrichnaWeb.Dto
 
         public int PlayerId { get; set; }
 
-        [JsonIgnore]
-        public Player Player { get; set; }
+        public PlayerBaseDto Player { get; set; }
 
         public string Name { get; set; }
 

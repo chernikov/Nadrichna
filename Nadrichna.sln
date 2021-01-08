@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadrichnaCore", "NadrichnaC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NadrichnaWeb", "NadrichnaWeb\NadrichnaWeb.csproj", "{B8E5081D-4836-4146-90EF-D696B2AED6FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NadrichnaWeb.Tests", "NadrichnaWeb.Tests\NadrichnaWeb.Tests.csproj", "{250E95AB-8248-4B41-ADA4-F9A7C0E0C39A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B8E5081D-4836-4146-90EF-D696B2AED6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8E5081D-4836-4146-90EF-D696B2AED6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8E5081D-4836-4146-90EF-D696B2AED6FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{250E95AB-8248-4B41-ADA4-F9A7C0E0C39A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{250E95AB-8248-4B41-ADA4-F9A7C0E0C39A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{250E95AB-8248-4B41-ADA4-F9A7C0E0C39A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{250E95AB-8248-4B41-ADA4-F9A7C0E0C39A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

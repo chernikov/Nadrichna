@@ -17,6 +17,8 @@ namespace NadrichnaWeb.Profiles
                     .ForMember(p => p.BirthdayDay, opt => opt.MapFrom(player => player.Birthday.Day))
                     .ForMember(p => p.BirthdayMonth, opt => opt.MapFrom(player => player.Birthday.Month))
                     .ForMember(p => p.BirthdayYear, opt => opt.MapFrom(player => player.Birthday.Year));
+            CreateMap<Player, PlayerBaseDto>();
+
             CreateMap<PlayerDto, Player>();
         }
     }

@@ -6,17 +6,9 @@ using System.Threading.Tasks;
 
 namespace NadrichnaWeb.Dto
 {
-    public class PlayerDto
+    public class PlayerDto : PlayerBaseDto
     {
-        public int Id { get; set; }
-
         public int? HouseId { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-
-        public string Nickname { get; set; }
 
         public int BirthdayDay { get; set; }
 
@@ -24,6 +16,7 @@ namespace NadrichnaWeb.Dto
 
         public int BirthdayYear { get; set; }
 
+        public List<TaskDto> Tasks { get; set; }
 
     }
 }
