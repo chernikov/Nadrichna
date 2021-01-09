@@ -20,6 +20,7 @@ namespace NadrichnaWeb.Profiles
             CreateMap<Player, PlayerBaseDto>();
 
             CreateMap<PlayerDto, Player>();
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NadrichnaWeb.Dto;
+using System;
 
 namespace NadrichnaWeb.Db
 {
