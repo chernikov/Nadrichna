@@ -20,7 +20,7 @@ namespace NadrichnaWeb.Api
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetList()
         {
             var list = taskRepository.GetAll();
             var resultList = mapper.Map<List<Task>, List<TaskDto>>(list);
@@ -28,7 +28,7 @@ namespace NadrichnaWeb.Api
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult Get(int id)
+        public IActionResult GetItem(int id)
         {
             var entity = taskRepository.Get(id);
             var result = mapper.Map<TaskDto>(entity);
@@ -53,7 +53,7 @@ namespace NadrichnaWeb.Api
 
         [HttpPut("{id:int}")]
 
-        public IActionResult Put(int id)
+        public IActionResult Complete(int id)
         {
             taskRepository.Complete(id);
             return Ok();
